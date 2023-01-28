@@ -2,7 +2,7 @@
 
 [![npm shield](https://img.shields.io/npm/v/@fern-api/vital)](https://www.npmjs.com/package/@fern-api/vital)
 
-The {Company} Node.js library provides access to the Vital API from JavaScript/TypeScript.
+The Vital Node.js library provides access to the Vital API from JavaScript/TypeScript.
 
 ## Documentation
 
