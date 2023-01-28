@@ -10,13 +10,7 @@ API reference documentation is available [here](https://docs.tryvital.io/api-ref
 
 ## Usage
 
-<a href="https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-tnqkdm?file=app.ts&view=editor" target="_blank">
-  <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg">
-</a>
-
-
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-tnqkdm?file=app.ts&view=editor)
-
 
 
 ```typescript
