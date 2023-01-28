@@ -9,7 +9,7 @@ import { Client as ActivityClient } from "./api/resources/activity/client/Client
 export declare namespace VitalApiClient {
     interface Options {
         environment?: environments.VitalApiEnvironment | string;
-        xVitalApiKey?: core.Supplier<string>;
+        apiKey?: core.Supplier<string>;
     }
 }
 

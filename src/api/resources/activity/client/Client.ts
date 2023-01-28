@@ -12,17 +12,17 @@ import * as errors from "../../../../errors";
 export declare namespace Client {
     interface Options {
         environment?: environments.VitalApiEnvironment | string;
-        xVitalApiKey?: core.Supplier<string>;
+        apiKey?: core.Supplier<string>;
     }
 }
 
 export class Client {
     constructor(private readonly options: Client.Options) {}
 
-    public async summary(
+    public async get(
         userId: VitalApi.UserId,
-        request: VitalApi.GetActivitySummaryRequest
-    ): Promise<VitalApi.ActivitySummaryResponse> {
+        request: VitalApi.ClientActivityRequest
+    ): Promise<VitalApi.ClientActivityResponse> {
         const { provider, startDate, endDate } = request;
         const _queryParams = new URLSearchParams();
         if (provider != null) {
@@ -30,7 +30,10 @@ export class Client {
         }
 
         _queryParams.append("start_date", startDate);
-        _queryParams.append("end_date", endDate);
+        if (endDate != null) {
+            _queryParams.append("end_date", endDate);
+        }
+
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.VitalApiEnvironment.Production,
@@ -38,13 +41,13 @@ export class Client {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this.options.xVitalApiKey),
+                "x-vital-api-key": await core.Supplier.get(this.options.apiKey),
             },
             queryParameters: _queryParams,
         });
         if (_response.ok) {
-            return await serializers.ActivitySummaryResponse.parse(
-                _response.body as serializers.ActivitySummaryResponse.Raw
+            return await serializers.ClientActivityResponse.parse(
+                _response.body as serializers.ClientActivityResponse.Raw
             );
         }
 
@@ -70,10 +73,10 @@ export class Client {
         }
     }
 
-    public async raw(
+    public async getRaw(
         userId: VitalApi.UserId,
-        request: VitalApi.RawActivitySummaryRequest
-    ): Promise<VitalApi.RawActivitySummaryResponse> {
+        request: VitalApi.ClientActivityRawRequest
+    ): Promise<VitalApi.ClientActivityRawResponse> {
         const { provider, startDate, endDate } = request;
         const _queryParams = new URLSearchParams();
         if (provider != null) {
@@ -89,13 +92,13 @@ export class Client {
             ),
             method: "GET",
             headers: {
-                "x-vital-api-key": await core.Supplier.get(this.options.xVitalApiKey),
+                "x-vital-api-key": await core.Supplier.get(this.options.apiKey),
             },
             queryParameters: _queryParams,
         });
         if (_response.ok) {
-            return await serializers.RawActivitySummaryResponse.parse(
-                _response.body as serializers.RawActivitySummaryResponse.Raw
+            return await serializers.ClientActivityRawResponse.parse(
+                _response.body as serializers.ClientActivityRawResponse.Raw
             );
         }
 

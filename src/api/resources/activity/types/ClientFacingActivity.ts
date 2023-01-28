@@ -4,9 +4,9 @@
 
 import { VitalApi } from "@fern-api/vital";
 
-export interface ActivitySummary {
+export interface ClientFacingActivity {
     /** Source the data has come from. */
-    source: VitalApi.ActivitySource;
+    source: VitalApi.Source;
     /** Date for specified record */
     date: string;
     /** < User id returned by vital create user request. This id should be stored in your database against the user and used for all interactions with the vital api. */

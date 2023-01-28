@@ -6,14 +6,14 @@ import * as serializers from "../../..";
 import { VitalApi } from "@fern-api/vital";
 import * as core from "../../../../core";
 
-export const ActivitySource: core.serialization.ObjectSchema<serializers.ActivitySource.Raw, VitalApi.ActivitySource> =
+export const Source: core.serialization.ObjectSchema<serializers.Source.Raw, VitalApi.Source> =
     core.serialization.object({
         slug: core.serialization.string(),
         name: core.serialization.string(),
         logo: core.serialization.string(),
     });
 
-export declare namespace ActivitySource {
+export declare namespace Source {
     interface Raw {
         slug: string;
         name: string;

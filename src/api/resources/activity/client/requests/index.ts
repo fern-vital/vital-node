@@ -1,2 +1,2 @@
-export { GetActivitySummaryRequest } from "./GetActivitySummaryRequest";
-export { RawActivitySummaryRequest } from "./RawActivitySummaryRequest";
+export { ClientActivityRequest } from "./ClientActivityRequest";
+export { ClientActivityRawRequest } from "./ClientActivityRawRequest";

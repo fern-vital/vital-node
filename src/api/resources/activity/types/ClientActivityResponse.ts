@@ -4,6 +4,6 @@
 
 import { VitalApi } from "@fern-api/vital";
 
-export interface RawActivitySummaryResponse {
-    activity: VitalApi.RawActivity[];
+export interface ClientActivityResponse {
+    activity: VitalApi.ClientFacingActivity[];
 }

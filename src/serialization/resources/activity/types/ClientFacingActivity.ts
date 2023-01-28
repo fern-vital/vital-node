@@ -6,11 +6,11 @@ import * as serializers from "../../..";
 import { VitalApi } from "@fern-api/vital";
 import * as core from "../../../../core";
 
-export const ActivitySummary: core.serialization.ObjectSchema<
-    serializers.ActivitySummary.Raw,
-    VitalApi.ActivitySummary
+export const ClientFacingActivity: core.serialization.ObjectSchema<
+    serializers.ClientFacingActivity.Raw,
+    VitalApi.ClientFacingActivity
 > = core.serialization.object({
-    source: core.serialization.lazyObject(async () => (await import("../../..")).ActivitySource),
+    source: core.serialization.lazyObject(async () => (await import("../../..")).Source),
     date: core.serialization.string(),
     userId: core.serialization.property(
         "user_id",
@@ -28,9 +28,9 @@ export const ActivitySummary: core.serialization.ObjectSchema<
     timezoneOffset: core.serialization.property("timezone_offset", core.serialization.number().optional()),
 });
 
-export declare namespace ActivitySummary {
+export declare namespace ClientFacingActivity {
     interface Raw {
-        source: serializers.ActivitySource.Raw;
+        source: serializers.Source.Raw;
         date: string;
         user_id: serializers.UserId.Raw;
         user_key?: string | null;

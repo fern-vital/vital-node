@@ -8,7 +8,8 @@ import * as core from "../../../../core";
 
 export const RawActivity: core.serialization.ObjectSchema<serializers.RawActivity.Raw, VitalApi.RawActivity> =
     core.serialization.object({
-        source: core.serialization.lazyObject(async () => (await import("../../..")).ActivitySource),
+        id: core.serialization.string(),
+        source: core.serialization.lazyObject(async () => (await import("../../..")).Source).optional(),
         priorityId: core.serialization.property(
             "priority_id",
             core.serialization.lazy(async () => (await import("../../..")).PriorityId)
@@ -26,17 +27,18 @@ export const RawActivity: core.serialization.ObjectSchema<serializers.RawActivit
             core.serialization.lazy(async () => (await import("../../..")).ProviderId)
         ),
         timestamp: core.serialization.date(),
-        data: core.serialization.lazyObject(async () => (await import("../../..")).ActivityData).optional(),
+        data: core.serialization.record(core.serialization.string(), core.serialization.string()),
     });
 
 export declare namespace RawActivity {
     interface Raw {
-        source: serializers.ActivitySource.Raw;
+        id: string;
+        source?: serializers.Source.Raw | null;
         priority_id: serializers.PriorityId.Raw;
         source_id: serializers.SourceId.Raw;
         user_id: serializers.UserId.Raw;
         provider_id: serializers.ProviderId.Raw;
         timestamp: string;
-        data?: serializers.ActivityData.Raw | null;
+        data: Record<string, string>;
     }
 }

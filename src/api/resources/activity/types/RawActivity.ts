@@ -5,12 +5,13 @@
 import { VitalApi } from "@fern-api/vital";
 
 export interface RawActivity {
+    id: string;
     /** Provider */
-    source: VitalApi.ActivitySource;
+    source?: VitalApi.Source;
     priorityId: VitalApi.PriorityId;
     sourceId: VitalApi.SourceId;
     userId: VitalApi.UserId;
     providerId: VitalApi.ProviderId;
     timestamp: Date;
-    data?: VitalApi.ActivityData;
+    data: Record<string, string>;
 }
