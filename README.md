@@ -13,9 +13,23 @@ API reference documentation is available [here](https://docs.tryvital.io/api-ref
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](TODO)
 
 ```typescript
-import { TODO } from "TODO";
+import { VitalApiClient, VitalApiEnvironment } from '@fern-api/vital';
 
-const TODO
+const client = new VitalApiClient({
+  environment: VitalApiEnvironment.Production,
+  xVitalApiKey: 'my-api-key',
+});
+
+const response = await client.activity.summary(
+  '70c64d5a-ff06-4c16-b137-361b2441d86e',
+  {
+    provider: 'oura',
+    startDate: '2023-01-01T20:11:37+00:00',
+    endDate: '2023-01-28T20:05:14+00:00',
+  }
+);
+
+console.log('Received response from Vital!', response);
 ```
 
 ## Beta status
