@@ -16,11 +16,10 @@ API reference documentation is available [here](https://docs.tryvital.io/api-ref
 import { VitalApiClient, VitalApiEnvironment } from '@fern-api/vital';
 
 const client = new VitalApiClient({
-  environment: VitalApiEnvironment.Production,
-  xVitalApiKey: 'my-api-key',
+  apiKey: 'my-api-key'
 });
 
-const response = await client.activity.summary(
+const response = await client.activity.get(
   '70c64d5a-ff06-4c16-b137-361b2441d86e',
   {
     provider: 'oura',
