@@ -3,7 +3,14 @@
  */
 
 export const VitalApiEnvironment = {
-    Production: "https://api.tryvital.io/v2",
+    UsProduction: "https://api.tryvital.io/",
+    EuProduction: "https://api.eu.tryvital.io",
+    UsSandbox: "https://api.sandbox.tryvital.io",
+    EuSandbox: "https://api.sandbox.eu.tryvital.io",
 } as const;
 
-export type VitalApiEnvironment = typeof VitalApiEnvironment.Production;
+export type VitalApiEnvironment =
+    | typeof VitalApiEnvironment.UsProduction
+    | typeof VitalApiEnvironment.EuProduction
+    | typeof VitalApiEnvironment.UsSandbox
+    | typeof VitalApiEnvironment.EuSandbox;

@@ -36,8 +36,8 @@ export class Client {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.VitalApiEnvironment.Production,
-                `/summary/activity/${userId}`
+                this.options.environment ?? environments.VitalApiEnvironment.UsProduction,
+                `/v2/summary/activity/${userId}`
             ),
             method: "GET",
             headers: {
@@ -87,8 +87,8 @@ export class Client {
         _queryParams.append("end_date", endDate);
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.VitalApiEnvironment.Production,
-                `/summary/activity/${userId}/raw`
+                this.options.environment ?? environments.VitalApiEnvironment.UsProduction,
+                `/v2/summary/activity/${userId}/raw`
             ),
             method: "GET",
             headers: {
