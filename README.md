@@ -16,7 +16,8 @@ API reference documentation is available [here](https://docs.tryvital.io/api-ref
 import { VitalApiClient, VitalApiEnvironment } from '@fern-api/vital';
 
 const client = new VitalApiClient({
-  apiKey: 'my-api-key'
+  environment: VitalApiEnvironment.EuSandbox,
+  apiKey: 'my-api-key',
 });
 
 const response = await client.activity.get(
