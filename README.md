@@ -13,11 +13,10 @@ API reference documentation is available [here](https://docs.tryvital.io/api-ref
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-tnqkdm?file=app.ts&view=editor?target=_blank)
 
 ```typescript
-import { VitalApiClient, VitalApiEnvironment } from '@fern-api/vital';
+import { VitalClient, VitalEnvironment } from '@fern-api/vital';
 
-const client = new VitalApiClient({
-  environment: VitalApiEnvironment.EuSandbox,
-  apiKey: 'my-api-key',
+const client = new VitalClient({
+  apiKey: 'my-api-key'
 });
 
 const response = await client.activity.get(
