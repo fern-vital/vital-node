@@ -6,15 +6,15 @@ import * as environments from "./environments";
 import * as core from "./core";
 import { Client as ActivityClient } from "./api/resources/activity/client/Client";
 
-export declare namespace VitalApiClient {
+export declare namespace VitalClient {
     interface Options {
-        environment?: environments.VitalApiEnvironment | string;
+        environment?: environments.VitalEnvironment | string;
         apiKey?: core.Supplier<string>;
     }
 }
 
-export class VitalApiClient {
-    constructor(private readonly options: VitalApiClient.Options) {}
+export class VitalClient {
+    constructor(private readonly options: VitalClient.Options) {}
 
     #activity: ActivityClient | undefined;
 

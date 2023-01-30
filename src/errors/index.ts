@@ -1,2 +1,2 @@
-export { VitalApiError } from "./VitalApiError";
-export { VitalApiTimeoutError } from "./VitalApiTimeoutError";
+export { VitalError } from "./VitalError";
+export { VitalTimeoutError } from "./VitalTimeoutError";

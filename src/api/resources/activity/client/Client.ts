@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { VitalApi } from "@fern-api/vital";
+import { Vital } from "@fern-api/vital";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
 export declare namespace Client {
     interface Options {
-        environment?: environments.VitalApiEnvironment | string;
+        environment?: environments.VitalEnvironment | string;
         apiKey?: core.Supplier<string>;
     }
 }
@@ -20,9 +20,9 @@ export class Client {
     constructor(private readonly options: Client.Options) {}
 
     public async get(
-        userId: VitalApi.UserId,
-        request: VitalApi.ClientActivityRequest
-    ): Promise<VitalApi.ClientActivityResponse> {
+        userId: Vital.UserId,
+        request: Vital.ClientActivityRequest
+    ): Promise<Vital.ClientActivityResponse> {
         const { provider, startDate, endDate } = request;
         const _queryParams = new URLSearchParams();
         if (provider != null) {
@@ -36,7 +36,7 @@ export class Client {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.VitalApiEnvironment.UsProduction,
+                this.options.environment ?? environments.VitalEnvironment.UsProduction,
                 `/v2/summary/activity/${userId}`
             ),
             method: "GET",
@@ -52,7 +52,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VitalApiError({
+            throw new errors.VitalError({
                 statusCode: _response.error.statusCode,
                 responseBody: _response.error.rawBody,
             });
@@ -60,23 +60,23 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.VitalApiError({
+                throw new errors.VitalError({
                     statusCode: _response.error.statusCode,
                     responseBody: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VitalApiTimeoutError();
+                throw new errors.VitalTimeoutError();
             case "unknown":
-                throw new errors.VitalApiError({
+                throw new errors.VitalError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     public async getRaw(
-        userId: VitalApi.UserId,
-        request: VitalApi.ClientActivityRawRequest
-    ): Promise<VitalApi.ClientActivityRawResponse> {
+        userId: Vital.UserId,
+        request: Vital.ClientActivityRawRequest
+    ): Promise<Vital.ClientActivityRawResponse> {
         const { provider, startDate, endDate } = request;
         const _queryParams = new URLSearchParams();
         if (provider != null) {
@@ -87,7 +87,7 @@ export class Client {
         _queryParams.append("end_date", endDate);
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.VitalApiEnvironment.UsProduction,
+                this.options.environment ?? environments.VitalEnvironment.UsProduction,
                 `/v2/summary/activity/${userId}/raw`
             ),
             method: "GET",
@@ -103,7 +103,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.VitalApiError({
+            throw new errors.VitalError({
                 statusCode: _response.error.statusCode,
                 responseBody: _response.error.rawBody,
             });
@@ -111,14 +111,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.VitalApiError({
+                throw new errors.VitalError({
                     statusCode: _response.error.statusCode,
                     responseBody: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.VitalApiTimeoutError();
+                throw new errors.VitalTimeoutError();
             case "unknown":
-                throw new errors.VitalApiError({
+                throw new errors.VitalError({
                     message: _response.error.errorMessage,
                 });
         }

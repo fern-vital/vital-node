@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { VitalApi } from "@fern-api/vital";
+import { Vital } from "@fern-api/vital";
 import * as core from "../../../../core";
 
 export const ClientFacingActivity: core.serialization.ObjectSchema<
     serializers.ClientFacingActivity.Raw,
-    VitalApi.ClientFacingActivity
+    Vital.ClientFacingActivity
 > = core.serialization.object({
     source: core.serialization.lazyObject(async () => (await import("../../..")).Source),
     date: core.serialization.string(),

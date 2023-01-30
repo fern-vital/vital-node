@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { VitalApi } from "@fern-api/vital";
+import { Vital } from "@fern-api/vital";
 import * as core from "../../../../core";
 
-export const SourceId: core.serialization.Schema<serializers.SourceId.Raw, VitalApi.SourceId> =
+export const SourceId: core.serialization.Schema<serializers.SourceId.Raw, Vital.SourceId> =
     core.serialization.number();
 
 export declare namespace SourceId {

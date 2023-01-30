@@ -1,4 +1,4 @@
-export * as VitalApi from "./api";
-export { VitalApiClient } from "./Client";
-export { VitalApiEnvironment } from "./environments";
-export { VitalApiError, VitalApiTimeoutError } from "./errors";
+export * as Vital from "./api";
+export { VitalClient } from "./Client";
+export { VitalEnvironment } from "./environments";
+export { VitalError, VitalTimeoutError } from "./errors";

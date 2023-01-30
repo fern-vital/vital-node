@@ -3,15 +3,14 @@
  */
 
 import * as serializers from "../../..";
-import { VitalApi } from "@fern-api/vital";
+import { Vital } from "@fern-api/vital";
 import * as core from "../../../../core";
 
-export const Source: core.serialization.ObjectSchema<serializers.Source.Raw, VitalApi.Source> =
-    core.serialization.object({
-        slug: core.serialization.string(),
-        name: core.serialization.string(),
-        logo: core.serialization.string(),
-    });
+export const Source: core.serialization.ObjectSchema<serializers.Source.Raw, Vital.Source> = core.serialization.object({
+    slug: core.serialization.string(),
+    name: core.serialization.string(),
+    logo: core.serialization.string(),
+});
 
 export declare namespace Source {
     interface Raw {

@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { VitalApi } from "@fern-api/vital";
+import { Vital } from "@fern-api/vital";
 import * as core from "../../../../core";
 
-export const PriorityId: core.serialization.Schema<serializers.PriorityId.Raw, VitalApi.PriorityId> =
+export const PriorityId: core.serialization.Schema<serializers.PriorityId.Raw, Vital.PriorityId> =
     core.serialization.number();
 
 export declare namespace PriorityId {

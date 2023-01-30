@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { VitalApi } from "@fern-api/vital";
+import { Vital } from "@fern-api/vital";
 import * as core from "../../../../core";
 
-export const RawActivity: core.serialization.ObjectSchema<serializers.RawActivity.Raw, VitalApi.RawActivity> =
+export const RawActivity: core.serialization.ObjectSchema<serializers.RawActivity.Raw, Vital.RawActivity> =
     core.serialization.object({
         id: core.serialization.string(),
         source: core.serialization.lazyObject(async () => (await import("../../..")).Source).optional(),
